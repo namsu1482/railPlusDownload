@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>앱 다운로드 센터</title>
+    <style>
+        body {
+            font-family: 'Apple SD Gothic Neo', sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid #eee;
+            padding: 30px 20px;
+            border-radius: 24px;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            display: block;
+            padding: 18px;
+            margin: 15px 0;
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .download-btn:active {
+            transform: scale(0.97);
+            opacity: 0.9;
+        }
+
+        /* 안드로이드 스타일 */
+        .android {
+            background-color: #3DDC84;
+            box-shadow: 0 4px #2eb86b;
+        }
+
+        /* iOS 스타일 */
+        .ios {
+            background-color: #000000;
+            box-shadow: 0 4px #333;
+        }
+
+        /* 업데이트 정보 스타일 추가 */
+        .update-info {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .update-time {
+            display: block;
+            font-weight: bold;
+            color: #007AFF;
+            margin-top: 5px;
+        }
+
+        .info {
+            font-size: 13px;
+            color: #999;
+            margin-top: 25px;
+            text-align: left;
+            background: #fcfcfc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📱 앱 설치하기</h1>
+        <p class="subtitle">기기에 맞는 버전을 선택해 주세요.</p>
+
+        <a href="https://raw.githubusercontent.com/namsu1482/iosInstall/main/railPlus_release.apk"
+            class="download-btn android">
+            Android용 APK 다운로드
+        </a>
+
+        <a href="itms-services://?action=download-manifest&url=https://namsu1482.github.io/iosInstall/manifest.plist"
+            class="download-btn ios">
+            iPhone용 앱 설치
+        </a>
+
+        <div class="update-info">
+            최근 업데이트 일시
+            <span id="last-update" class="update-time">정보를 불러오는 중...</span>
+        </div>
+
+        <div class="info">
+            <strong>설치 안내</strong><br>
+            • Android: '출처를 알 수 없는 앱' 허용이 필요할 수 있습니다.<br>
+            • iOS: 설정 > 일반 > VPN 및 기기 관리에서 개발자 신뢰 설정이 필요합니다.
+        </div>
+    </div>
+
+    <script>
+        // GitHub API를 통해 마지막 커밋(업데이트) 시간을 가져옵니다.
+        const username = "namsu1482";
+        const repository = "iosInstall";
+        const filename = "railPlus_release.apk"; // 이 파일의 수정 시간을 기준으로 합니다.
+
+        async function fetchLastUpdate() {
+            const displayElement = document.getElementById('last-update');
+            try {
+                const response = await fetch(`https://api.github.com/repos/${username}/${repository}/commits?path=${filename}`);
+                const commits = await response.json();
+
+                if (commits && commits.length > 0) {
+                    const commitDate = new Date(commits[0].commit.committer.date);
+
+                    // 한국어 형식으로 날짜 및 시간 포맷팅
+                    const formattedDate = commitDate.toLocaleString('ko-KR', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    });
+
+                    displayElement.innerText = formattedDate;
+                } else {
+                    displayElement.innerText = "업데이트 정보 없음";
+                }
+            } catch (error) {
+                console.error("날짜 로드 실패:", error);
+                displayElement.innerText = "날짜 정보를 불러올 수 없습니다.";
+            }
+        }
+
+        fetchLastUpdate();
+    </script>
+</body>
+
+</html>
