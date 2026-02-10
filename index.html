@@ -108,8 +108,8 @@
         </a>
 
         <div class="update-info">
-            최근 업데이트 일시
-            <span id="last-update" class="update-time">정보를 불러오는 중...</span>
+            Android 업데이트: <span id="apk-update" class="update-time">불러오는 중...</span><br>
+            iOS 업데이트: <span id="ios-update" class="update-time">불러오는 중...</span>
         </div>
 
         <div class="info">
@@ -123,10 +123,9 @@
         // GitHub API를 통해 마지막 커밋(업데이트) 시간을 가져옵니다.
         const username = "namsu1482";
         const repository = "railPlusDownload";
-        const filename = "railPlus_release.apk"; // 이 파일의 수정 시간을 기준으로 합니다.
 
-        async function fetchLastUpdate() {
-            const displayElement = document.getElementById('last-update');
+        async function fetchLastUpdate(filename, elementId) {
+            const displayElement = document.getElementById(elementId);
             try {
                 const response = await fetch(`https://api.github.com/repos/${username}/${repository}/commits?path=${filename}`);
                 const commits = await response.json();
@@ -154,7 +153,8 @@
             }
         }
 
-        fetchLastUpdate();
+        fetchLastUpdate("railPlus_release.apk", "apk-update");
+        fetchLastUpdate("kotris_crm_user_app.ipa", "ios-update");
     </script>
 </body>
 
