@@ -11,17 +11,17 @@
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>https://namsu1482.github.io/railPlusDownload/kotris_crm_sdk_test_app.ipa</string>
+                    <string>https://namsu1482.github.io/railPlusDownload/kotris_crm_user_app.ipa</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>kr.co.korail.kotrisCrmSdkTestApp</string> <key>bundle-version</key>
+                <string>com.korail.rail</string> <key>bundle-version</key>
                 <string>1.0.0</string> <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>코레일 앱</string> </dict>
+                <string>레일플러스 앱</string> </dict>
         </dict>
     </array>
 </dict>
