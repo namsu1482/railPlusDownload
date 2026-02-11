@@ -17,8 +17,10 @@
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>com.korail.rail</string> <key>bundle-version</key>
-                <string>1.0.0</string> <key>kind</key>
+                <string>com.korail.rail</string>
+                <key>bundle-version</key>
+                <string>1.0.0</string>
+                <key>kind</key>
                 <string>software</string>
                 <key>title</key>
                 <string>레일플러스 앱</string> </dict>
