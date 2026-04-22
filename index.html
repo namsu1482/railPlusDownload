@@ -113,7 +113,8 @@
         </a>
 
         <div class="update-info">
-            Android 업데이트: <span id="apk-update" class="update-time">불러오는 중...</span><br>
+            Android(운영) 업데이트: <span id="apk-update" class="update-time">불러오는 중...</span><br>
+            Android(개발) 업데이트: <span id="apk-dev-update" class="update-time">불러오는 중...</span><br>
             iOS 업데이트: <span id="ios-update" class="update-time">불러오는 중...</span>
         </div>
 
@@ -159,7 +160,7 @@
         }
 
         fetchLastUpdate("railPlus_release.apk", "apk-update");
-        fetchLastUpdate("railPlus_dev.apk", "apk-update");
+        fetchLastUpdate("railPlus_dev.apk", "apk-dev-update");
         fetchLastUpdate("kotris_crm_user_app.ipa", "ios-update");
     </script>
 </body>
