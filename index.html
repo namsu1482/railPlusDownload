@@ -107,6 +107,11 @@
             Android용 APK 다운로드(개발)
         </a>
 
+        <a href="https://raw.githubusercontent.com/namsu1482/railPlusDownload/main/fxs_railPlus_release.apk"
+           class="download-btn android">
+            Android용 APK 다운로드(운영/난독화)
+        </a>
+
         <a href="itms-services://?action=download-manifest&url=https://namsu1482.github.io/railPlusDownload/manifest.plist"
             class="download-btn ios">
             iPhone용 앱 설치
@@ -115,6 +120,7 @@
         <div class="update-info">
             Android(운영) 업데이트: <span id="apk-update" class="update-time">불러오는 중...</span><br>
             Android(개발) 업데이트: <span id="apk-dev-update" class="update-time">불러오는 중...</span><br>
+            Android(운영/난독화) 업데이트: <span id="apk-fxs-update" class="update-time">불러오는 중...</span><br>
             iOS 업데이트: <span id="ios-update" class="update-time">불러오는 중...</span>
         </div>
 
@@ -161,6 +167,7 @@
 
         fetchLastUpdate("railPlus_release.apk", "apk-update");
         fetchLastUpdate("railPlus_dev.apk", "apk-dev-update");
+        fetchLastUpdate("fxs_railPlus_release.apk", "apk-fxs-update");
         fetchLastUpdate("kotris_crm_user_app.ipa", "ios-update");
     </script>
 </body>
