@@ -1,0 +1,40 @@
+# .github/workflows/deploy.yml
+name: Deploy LFS to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # 코드를 push하는 브랜치명 확인
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps:deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # 핵심 설정: LFS 파일을 실제 데이터로 가져옵니다.
+          lfs: true
+
+      - name: Checkout LFS objects
+        run: git lfs checkout
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 프로젝트의 루트(.)를 배포합니다.
+          path: "."
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
