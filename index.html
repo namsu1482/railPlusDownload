@@ -96,24 +96,20 @@
     <div class="container">
         <h1>📱 앱 설치하기</h1>
         <p class="subtitle">기기에 맞는 버전을 선택해 주세요.</p>
-        <a href="https://raw.githubusercontent.com/namsu1482/railPlusDownload/main/signed_fxs_railPlus_release.apk"
+
+        <a href="https://raw.githubusercontent.com/namsu1482/railPlusDownload/main/railPlus_dev.apk"
            class="download-btn android">
-            Android용 APK(운영/로깅14)
+            Android용 APK(개발)
         </a>
 
         <a href="https://raw.githubusercontent.com/namsu1482/railPlusDownload/main/railPlus_release.apk"
             class="download-btn android">
-            Android용 APK(운영/직원)
+            Android용 APK(운영)
         </a>
 
         <a href="https://raw.githubusercontent.com/namsu1482/railPlusDownload/main/fxs_railPlus_release.apk"
            class="download-btn android">
             Android용 APK(운영/직원/난독화)
-        </a>
-
-        <a href="https://raw.githubusercontent.com/namsu1482/railPlusDownload/main/railPlus_dev.apk"
-           class="download-btn android">
-            Android용 APK(개발)
         </a>
 
         <!-- <a href="./railPlus_release.apk"
@@ -137,9 +133,9 @@
         </a>
 
         <div class="update-info">
+            Android(개발) 업데이트: <span id="apk-dev-update" class="update-time">불러오는 중...</span><br>
             Android(운영) 업데이트: <span id="apk-update" class="update-time">불러오는 중...</span><br>
             Android(운영/난독화) 업데이트: <span id="apk-fxs-update" class="update-time">불러오는 중...</span><br>
-            Android(개발) 업데이트: <span id="apk-dev-update" class="update-time">불러오는 중...</span><br>
             iOS 업데이트: <span id="ios-update" class="update-time">불러오는 중...</span>
         </div>
 
@@ -184,8 +180,8 @@
             }
         }
 
-        fetchLastUpdate("railPlus_release.apk", "apk-update");
         fetchLastUpdate("railPlus_dev.apk", "apk-dev-update");
+        fetchLastUpdate("railPlus_release.apk", "apk-update");
         fetchLastUpdate("fxs_railPlus_release.apk", "apk-fxs-update");
         fetchLastUpdate("kotris_crm_user_app.ipa", "ios-update");
     </script>
